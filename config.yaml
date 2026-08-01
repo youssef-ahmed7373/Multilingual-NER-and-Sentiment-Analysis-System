@@ -1,0 +1,43 @@
+app_metadata:
+  package_name: "nlp_core"
+  version: "1.0.0"
+
+ner_model_settings:
+  model_checkpoint: "xlm-roberta-base"
+  model_finetuned: "Einstien/xlm-roberta-base-multilingual-ner"
+  max_length: 256
+  languages: ["en", "ar", "de", "fr"]
+  train_samples: 1000
+  val_samples: 300
+  test_samples: 300
+  output_dir: "./models/ner/final"
+  raw_data_dir: "./data/raw/ner"
+  processed_data_dir: "./data/processed/ner"
+  num_epochs: 1
+  batch_size_train: 16
+  batch_size_eval: 32
+  learning_rate: 2.0e-5
+  weight_decay: 0.01
+  warmup_ratio: 0.1
+  fp16: true
+  label_list: ["O", "B-PER", "I-PER", "B-ORG", "I-ORG", "B-LOC", "I-LOC"]
+
+sentiment_model_settings:
+  model_checkpoint: "xlm-roberta-base"
+  model_finetuned: "Einstien/xlmr-sentiment-multilingual-ar-en-de-fr"
+  max_length: 128
+  languages: ["arabic", "english", "french", "german"]
+  train_samples: None
+  val_samples: None
+  test_samples: None
+  output_dir: "./models/sentiment/final"
+  raw_data_dir: "./data/raw/sentiment"
+  processed_data_dir: "./data/processed/sentiment"
+  num_epochs: 5
+  batch_size_train: 32
+  batch_size_eval: 64
+  learning_rate: 2.0e-5
+  weight_decay: 0.01
+  warmup_ratio: 0.1
+  fp16: true
+  label_list: ["negative", "neutral", "positive"]
